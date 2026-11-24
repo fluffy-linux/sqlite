@@ -272,9 +272,13 @@ install-man1: $(TOP)/sqlite3.1 $(install-dir.man1)
 install: install-man1
 
 #
-# check: a shell smoke test.
+# check: autosetup PATH-search tests plus a shell smoke test.  TCLSH may
+# be set to the canonical tclsh to use; the jimsh0 bootstrap interpreter
+# is always built from $(TOP)/autosetup/jimsh0.c and tested as well.
 #
+TCLSH = tclsh
 check: sqlite3$(T.exe)
+	CC="$(CC)" TCLSH="$(TCLSH)" $(SHELL) $(TOP)/test/autosetup-split-path.sh $(TOP)
 	LD_LIBRARY_PATH=. $(SHELL) $(TOP)/test/sqlite3-smoke.sh ./sqlite3$(T.exe)
 
 clean:
