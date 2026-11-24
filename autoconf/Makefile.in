@@ -271,6 +271,12 @@ install-man1: $(TOP)/sqlite3.1 $(install-dir.man1)
 	$(INSTALL.noexec) $(TOP)/sqlite3.1 "$(install-dir.man1)"
 install: install-man1
 
+#
+# check: a shell smoke test.
+#
+check: sqlite3$(T.exe)
+	LD_LIBRARY_PATH=. $(SHELL) $(TOP)/test/sqlite3-smoke.sh ./sqlite3$(T.exe)
+
 clean:
 	rm -f *.o sqlite3$(T.exe)
 	rm -f $(libsqlite3.LIB) $(libsqlite3.DLL) libsqlite3$(T.dll).a
@@ -284,7 +290,7 @@ DIST_FILES := \
   sqlite3.h sqlite3.c shell.c sqlite3ext.h \
   Makefile.in Makefile.msc Makefile.fallback make.bat \
   sqlite3.rc sqlite3rc.h Replace.cs \
-  sqlite3.pc.in sqlite3.1
+  sqlite3.pc.in sqlite3.1 test
 
 #
 # Maintenance note: dist_name must be sqlite-$(PACKAGE_VERSION) so
