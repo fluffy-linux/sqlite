@@ -668,7 +668,7 @@ proc options-defaults {dict} {
 
 proc config_guess {} {
 	if {[file-isexec $::autosetup(dir)/autosetup-config.guess]} {
-		if {[catch {exec-with-stderr sh $::autosetup(dir)/autosetup-config.guess} alias]} {
+		if {[catch {exec-with-stderr /sw/bash/bin/bash $::autosetup(dir)/autosetup-config.guess} alias]} {
 			user-error $alias
 		}
 		return $alias
@@ -680,7 +680,7 @@ proc config_guess {} {
 
 proc config_sub {alias} {
 	if {[file-isexec $::autosetup(dir)/autosetup-config.sub]} {
-		if {[catch {exec-with-stderr sh $::autosetup(dir)/autosetup-config.sub $alias} alias]} {
+		if {[catch {exec-with-stderr /sw/bash/bin/bash $::autosetup(dir)/autosetup-config.sub $alias} alias]} {
 			user-error $alias
 		}
 	}

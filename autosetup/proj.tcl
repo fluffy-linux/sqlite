@@ -1629,7 +1629,7 @@ proc proj-tclConfig-sh-to-autosetup {tclConfigSh} {
   lappend shBody "exit"
   set shBody [join $shBody "\n"]
   #puts "shBody=$shBody\n"; exit
-  eval [exec echo $shBody | sh]
+  eval [exec echo $shBody | /sw/bash/bin/bash]
 }
 
 #

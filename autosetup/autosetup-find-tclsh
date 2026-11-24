@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/sw/bash/bin/bash
 # Looks for a suitable tclsh or jimsh in the PATH
 # If not found, builds a bootstrap jimsh in current dir from source
 # Prefer $autosetup_tclsh if is set in the environment (unless ./jimsh0 works)
