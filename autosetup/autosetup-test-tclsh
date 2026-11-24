@@ -13,7 +13,11 @@ if {[catch {info version} version] == 0} {
 	}
 } elseif {[catch {info tclversion} version] == 0} {
 	if {$version >= 8.5 && ![string match 8.5a* [info patchlevel]]} {
-		puts [info nameofexecutable]
+		set exe [info nameofexecutable]
+		if {$exe eq ""} {
+			set exe "/sw/tcl/bin/tclsh"
+		}
+		puts $exe
 		exit 0
 	}
 }
